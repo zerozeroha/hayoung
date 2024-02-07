@@ -12,7 +12,8 @@ StringBuffer sb = new StringBuffer ("0123456")
 /*길이가 같은 두 문자열 str1과 str2가 주어집니다.
 
 두 문자열의 각 문자가 앞에서부터 서로 번갈아가면서 한 번씩 등장하는 문자열을 만들어 return 하는 solution 함수를 완성해 주세요.*/
-//SOLUTION
+
+// SOLUTION
 class Solution {
     public String solution(String str1, String str2) {
         String answer = "";
@@ -25,24 +26,39 @@ class Solution {
     }
 }
 
+/* < 결과값 >
+입력값 〉	"aaaaa", "bbbbb"
+기댓값 〉	"ababababab" */
+
 
 
 //2. 문자리스트를 문자열로 변환하기
+
+// 문자들이 담겨있는 배열 arr가 주어집니다. arr의 원소들을 순서대로 이어 붙인 문자열을 return 하는 solution함수를 작성해 주세요.
+
+// SOLUTION
 class Solution {
     public String solution(String[] arr) {
         String answer = "";
         
         for( int i = 0; i < arr.length; i++) {
             answer += arr[i];
-        }
-        
+        }        
         return answer;
-        
-        
     }
 }
 
+/* < 결과값 >
+입력값 〉	["a", "b", "c"]
+기댓값 〉	"abc" */
+
+
+
 //3. 문자열 곱하기
+
+// 문자열 my_string과 정수 k가 주어질 때, my_string을 k번 반복한 문자열을 return 하는 solution 함수를 작성해 주세요.
+
+// SOLUTION
 class Solution {
     public String solution(String my_string, int k) {
         String answer = "";
@@ -54,7 +70,27 @@ class Solution {
     }
 }
 
+/* < 결과값 >
+입력값 〉	"string", 3
+기댓값 〉	"stringstringstring"
+
+테스트 2
+입력값 〉	"love", 10
+기댓값 〉	"lovelovelovelovelovelovelovelovelovelove"  */
+
+
+
 //4. 더 크게 합치기
+
+/* 연산 ⊕는 두 정수에 대한 연산으로 두 정수를 붙여서 쓴 값을 반환합니다. 예를 들면 다음과 같습니다.
+
+12 ⊕ 3 = 123
+3 ⊕ 12 = 312
+양의 정수 a와 b가 주어졌을 때, a ⊕ b와 b ⊕ a 중 더 큰 값을 return 하는 solution 함수를 완성해 주세요.
+
+단, a ⊕ b와 b ⊕ a가 같다면 a ⊕ b를 return 합니다. */
+
+// SOLUTION
 class Solution {
     public int solution(int a, int b) {
         int answer = 0;
@@ -72,7 +108,28 @@ class Solution {
     }
 }
 
+/* < 결과값 >
+테스트 1
+입력값 〉	9, 91
+기댓값 〉	991
+
+테스트 2
+입력값 〉	89, 8
+기댓값 〉	898 */
+
+
+
 //5. 두 수의 연산값 비교하기
+
+연산 ⊕는 두 정수에 대한 연산으로 두 정수를 붙여서 쓴 값을 반환합니다. 예를 들면 다음과 같습니다.
+
+12 ⊕ 3 = 123
+3 ⊕ 12 = 312
+양의 정수 a와 b가 주어졌을 때, a ⊕ b와 2 * a * b 중 더 큰 값을 return하는 solution 함수를 완성해 주세요.
+
+단, a ⊕ b와 2 * a * b가 같으면 a ⊕ b를 return 합니다.
+
+// SOLUTION    
 class Solution {
     public int solution(int a, int b) {
        int asnswer = 0;
@@ -87,3 +144,18 @@ class Solution {
         }
     }
 }
+
+< 결과값 > 
+테스트 1
+입력값 〉	2, 91
+기댓값 〉	364
+
+테스트 2
+입력값 〉	91, 2
+기댓값 〉	912
+
+
+
+
+
+
