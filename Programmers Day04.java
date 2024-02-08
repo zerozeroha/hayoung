@@ -138,6 +138,13 @@ if (ineq.equals("<")  && eq.equals("=")) {
 예를 들어, 두 개의 String 객체가 있을 때 이들이 동일한 문자열을 가지고 있는지를 확인하려면 equals() 메서드를 사용할 수 있습니다.
 이 메서드는 문자열의 실제 내용을 비교하므로, 두 String 객체가 같은 문자열을 가지고 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
 
+< ==연산자와 equals()메서드의 차이점 >  
+: 연산자는 비교하는 두 대상의 주소값을 비교하는데 반해 String 클래스의 equals() 메서드는 비교하는 두 대상의 값을 비교하는 것    
+    기본 타입의 int형, char형등은 Call by Value 형태로 기본적으로 대상에 주소값을 가지지 않는 형태로 사용됩니다. 
+    하지만 String은 일반적인 타입이 아니라 클래스입니다. 
+    클래스는 기본적으로 Call by Reference형태로 객체 생성 시 주소값이 부여됩니다. 
+    그렇기에 String 타입을 선언했을때는 같은 값을 부여하더라도 서로의 주소값이 다릅니다.
+
 
 
 5. flag에 따라 다른 값 반환하기
@@ -148,9 +155,7 @@ Q. 두 정수 a, b와 boolean 변수 flag가 매개변수로 주어질 때, flag
   
   class Solution {
     public int solution(int a, int b, boolean flag) {
-      
-      
-        
+           
         if(flag == true) {
            return a+b; 
         }else  {
@@ -160,7 +165,7 @@ Q. 두 정수 a, b와 boolean 변수 flag가 매개변수로 주어질 때, flag
     }
 }
 
-
+>> flag에 바로 true나 false 입력해서 코드 짜면 됨.
 
 
 
