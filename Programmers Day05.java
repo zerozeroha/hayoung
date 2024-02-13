@@ -161,6 +161,12 @@ class Solution {
     }
 }
 
+< StringBuidler >
+
+- Java에서 StringBuilder는 가변(mutable)한 문자열을 처리하기 위한 클래스입니다.
+- StringBuffer와 마찬가지로 새로운 문자열을 추가하거나 변경하게 되면 “기존의 객체”로 추가 및 변경이 됩니다.
+- StringBuffer와 다르게 멀티쓰레드 환경에서 안정적이지 않으며, StringBuilder는 싱글쓰레드 환경에서 StringBuffer보다 더 빠른 성능을 가집니다.
+ 
 
 
 
