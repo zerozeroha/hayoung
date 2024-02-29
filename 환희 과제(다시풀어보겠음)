@@ -1,0 +1,117 @@
+=================================================
+*스톱워치 만들기*
+setInterval(), clearInterval(), innerText 사용~
+js04_function/js11_clock.html에 zeroFill 참고~
+=================================================
+
+환희답
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="stopWatch">00:00.00</div>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+    <script>
+        let timerStart;
+        let mm = 0;
+        let ss = 0;
+        let ms = 0;
+        const stopWatch = document.getElementById('stopWatch');
+        function start() {
+        }
+        
+        function stop() {
+        }
+
+        function reset() {
+        }
+    </script>
+</body>
+</html>
+
+내답
+<!--=================================================
+*스톱워치 만들기*
+setInterval(), clearInterval(), innerText 사용~
+js04_function/js11_clock.html에 zeroFill 참고~
+
+
+- clearInterval() 함수 : JavaScript에서 사용되는 타이머 함수 중 하나로, 
+setInterval() 함수로 설정한 일정 시간마다 실행되는 작업을 멈출 때 사용.
+
+- setInterval() 함수 : 특정 함수를 일정 시간 간격으로 반복적으로 실행할 수 있도록 해주는 함수
+이 때 반환되는 값은 타이머의 식별자인데, 
+이를 clearInterval() 함수에 넘겨주면 해당 타이머가 멈춤.
+
+예를 들어 setInterval() 함수를 사용하여 1초마다 특정 함수를 실행하도록 설정하고, 
+이를 clearInterval() 함수를 사용하여 멈출 수 있음.
+=================================================-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="stylesheet" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="stopWatch">00:00.00</div>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+
+    <script>
+        let timerStart;
+        let mm = 0;
+        let ss = 0;
+        let ms = 0;
+        const stopWatch = document.getElementById('stopWatch');
+
+
+        function writeClock(mm,ss,ms) {
+        let clock = document.querySelector("#stopWatch");
+        stopWatch.innerText = `${mm}:${ss}:${ms}`;
+        } 
+
+        function start(num) {
+            time = setInterval(function() {
+            ms=parseInt(ms)+10;//setInterval함수로 0.01초만큼 ms도 0.01만큼 증가하는 식
+            if(ms>=1000) {
+                ss++;
+                ms=0;
+                
+                
+                if(ss>=60){
+                    mm++;
+                    ss=0;
+                   
+            writeClock(mm,ss,ms);
+                  
+        }
+        }
+        },10);   
+        }
+       
+        function stop(num) {
+            clearInterval(timerStart);
+            writeClock(mm,ss,ms);
+        }
+
+        function reset(num) {
+            mm=0;
+            ss=0;
+            ms=0;
+            
+            writeClock(mm, ss, ms) 
+            }
+    
+    
+
+    </script>
+</body>
+</html>
