@@ -1,3 +1,5 @@
+< 풀이 >
+	
 package younggun;
 
 public abstract class Employee {
