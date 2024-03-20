@@ -33,7 +33,7 @@ print("결과:", combined_data)
 
 
 
-< 해설 >
+< 풀이 >
 
 a_data = [] 
 b_data = []
