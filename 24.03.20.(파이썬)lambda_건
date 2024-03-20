@@ -1,0 +1,76 @@
+< 문제 >
+
+
+아래 names 문자열을 이용해서 1 ~ 4 번 문제 풀면됩니다!
+
+names = "김영건,손흥민,박지성,나윤호,홍명보,심주찬,나윤호,유현준,김영건,표민,김하영
+,김영건,정소현,윤혜린,이환희,이영표,유현준,손흥민,정소현".split(",")
+
+
+#1 김씨와 이씨 성을 가진 사람은 각각 몇명인지 출력
+>> list - lambda식 이용
+
+#2 김영건 이름이 몇개 들어있는지 출력
+>> lambda식 이용
+
+#3 중복을 제거 후 출력
+
+
+#4 중복 제거 한 이름을 오름차순으로 출력
+
+
+
+< 풀이 >
+
+names = "김영건,손흥민,박지성,나윤호,홍명보,심주찬,나윤호,유현준,김영건,표민,김하영,김영건,정소현,윤혜린,이환희,이영표,유현준,손흥민,정소현".split(",")
+
+
+#1 김씨와 이씨 성을 가진 사람은 각각 몇명인지 출력
+# >> list - lambda식 이용
+funcReturnLambda = lambda names: [len([name for name in names if name.startswith("김")]), len([name for name in names if name.startswith("이")])]
+
+print(funcReturnLambda(names))
+
+# startswith() : 문자열이 지정된 접두사로 시작하는지 여부를 확인하는 메서드
+# name == "김%" : 파이썬의 startswith() 메서드는 와일드카드 문자(% 등)를 사용할 수 없음.
+# compile() : 정규 표현식을 컴파일하는 함수이며, 문자열에 대해 패턴 매칭을 수행하는 메서드가 아님 -> 따라서 compile("^김")과 같은 방식으로 사용할 수 없음. 
+
+출력 : [4, 2]
+
+
+
+
+
+
+#2 김영건 이름이 몇개 들어있는지 출력
+# >> lambda식 이용
+funcReturnLambda = lambda names: [len([name for name in names if name=="김영건"])]
+
+print(funcReturnLambda(names))
+
+출력 : [3]
+
+
+
+
+
+#3 중복을 제거 후 출력
+a_names = set(names)
+print(a_names)
+
+출력 : {'유현준', '손흥민', '윤혜린', '김영건', '박지성', '나윤호', '홍명보', '심주찬', '이영표', '표민', '이환희', '정소현', '김하영'}
+
+
+
+
+
+#4 중복 제거 한 이름을 오름차순으로 출력
+sorted_names = sorted(a_names)
+print(sorted_names)
+
+# set 객체는 내부적으로 요소들을 정렬하지 않음.
+# 따라서 set 객체를 만든 후에 오름차순으로 정렬하려면 sorted 함수를 사용해야 함.
+
+출력 : ['김영건', '김하영', '나윤호', '박지성', '손흥민', '심주찬', '유현준', '윤혜린', '이영표', '이환희', '정소현', '표민', '홍명보']
+
+
