@@ -34,3 +34,30 @@ v6r5QbDQBc
 Y39BJ5SJin
 ^JI9yb.R.w
 LaQ.rFt5G6
+
+
+< 해설 >
+
+import random
+
+chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@$%^&*().,?0123456789'
+
+m = int(input('비밀번호의 갯수를 입력하시오 -> '))
+n = int(input('비밀번호의 길이를 입력하시오 -> '))
+
+
+for j in range(m):
+    for i in range(n):
+        a = random.randint(1, len(chars)-1)
+        print(chars[a], end="")
+    print()       
+
+
+    
+
+
+
+
+
+
+
