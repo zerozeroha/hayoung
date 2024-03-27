@@ -16,38 +16,55 @@
 # 수업시간에 한 코드 보면서 공부해도 좋습니다.!!
 #조건1을 풀게되면 2는 금방 풀어서 열시미 해봅시다!
 #형식
+
+
 import sqlite3
 
-def 메서드명():
-    conn = sqlite3.~~~~
-    cursor = ~~~~
+# 데이터베이스 연결 함수
+def connect_db():
+    try:
+        conn = sqlite3.connect('./data/study.db')
+        return conn
+    except sqlite3.Error as e:
+        print(e)
+        return None
 
-    sql =  ~~~~
-    cursor.~~~~
-
-    books = ~~~~
-
-    ##출력문
-    for ~~~~:
-       ~~~~
+# 조건별 출력
+def select_data():
+    conn = connect_db()
+    if conn is None:
+        return
     
-cursor.close()
-conn.close()
-#형식
-import MySQLdb
+    try:
+        cursor = conn.cursor()
+        # 조건 1: name에 '영' 이라는 글자 그리고 age는 25이상인 데이터를 모두 출력
+        cursor.execute("SELECT * FROM study WHERE name LIKE '%영%' AND age >= 25")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+    except sqlite3.Error as e:
+        print(e)
+    finally:
+        conn.close()
 
-conn = MySQLdb.~~~~
-cursor = ~~~~
+# 삭제 기능
+def delete_data():
+    conn = connect_db()
+    if conn is None:
+        return
+    
+    try:
+        cursor = conn.cursor()
+        # 조건 2: 나이가 20세에서 30세 사이이고 주소가 '서울' 또는 '부산'인 사용자를 검색하며,
+        # 그 결과를 나이를 기준으로 내림차순으로 정렬하기
+        cursor.execute("DELETE FROM study WHERE age BETWEEN 20 AND 30 AND addr IN ('서울', '부산')")
+        conn.commit()
+        print("삭제 완료")
+    except sqlite3.Error as e:
+        print(e)
+    finally:
+        conn.close()
 
-
-sql = ~~~
-
-cursor.~~~
-suppliers = ~~~
-
-##출력문
-    for ~~~~:
-       ~~~~
-
-cursor.close()
-conn.close()  
+# 함수 호출
+select_data()
+delete_data()
