@@ -1,0 +1,28 @@
+import random
+
+# 주사위 5개의 값을 각각 무작위로 생성
+dice1 = int(random.random()*6+1)
+dice2 = int(random.random()*6+1)
+dice3 = int(random.random()*6+1)
+dice4 = int(random.random()*6+1)
+dice5 = int(random.random()*6+1)
+
+# Small Straight 조건
+small_straight = [1, 2, 3, 4, 5]  # 혹은 [2, 3, 4, 5, 6]
+if sorted([dice1, dice2, dice3, dice4, dice5]) in [small_straight, small_straight[::-1]]:
+    point = 15
+else:
+    point = 0
+
+print("Small Straight:", dice1, dice2, dice3, dice4, dice5)
+print("Point:", point)
+
+# Large Straight 조건
+large_straight = [1, 2, 3, 4, 5, 6]
+if sorted([dice1, dice2, dice3, dice4, dice5]) == large_straight:
+    point = 30
+else:
+    point = 0
+
+print("Large Straight:", dice1, dice2, dice3, dice4, dice5)
+print("Point:", point)
