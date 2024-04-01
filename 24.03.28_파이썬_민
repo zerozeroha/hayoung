@@ -1,4 +1,4 @@
-< 문제 >
+< 문제 - 풀이 >
 
 1번
 
@@ -7,11 +7,20 @@ import pandas as pd
 # 데이터 리스트를 plot 메서드를 이용해 line,bar,barh, pie 그래프를 그리시오
 data = [1, 4, 3, 9, 2, 6, 7]
 
+import pandas as pd
+data = [1, 4, 3, 9, 2, 6, 7]
+
+s = pd.Series(data)
+s.plot(kind = 'line')
+s.plot(kind = 'bar')
+s.plot(kind = 'barh')
+s.plot(kind = 'pie')
+
 2번
 
 다음 중에 넘파이를 사용하여 행렬의 전치(transpose)를 구하는 함수는 무엇인가요?
-a) np.transpose()
-b) np.transpose_matrix()!
+a) np.transpose() !
+b) np.transpose_matrix()
 c) np.matrix_transpose()
 d) np.matrixTranspose()
 
@@ -28,13 +37,13 @@ c) np.create_matrix(3, 3)
 d) np.empty((3, 3))
 
 다음 중에 주어진 행렬의 열끼리의 합을 구하는 함수는 무엇인가요?
-a) np.sum(axis=0)
+a) np.sum(axis=0) !
 b) np.add_rows()
 c) np.row_sum()
 d) np.sum_rows()
 
 다음 중에 두 행렬의 요소별 곱셈을 수행하는 함수는 무엇인가요?
-a) np.multiply()
+a) np.multiply() !
 b) np.dot_product()
 c) np.elementwise_multiply()
 d) np.multiply_elements()!
