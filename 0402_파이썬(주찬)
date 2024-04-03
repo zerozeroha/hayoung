@@ -1,0 +1,25 @@
+import pandas as pd
+
+# 날씨 데이터
+data = {
+    'date': ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04', '2022-01-05'],
+    'temp_data': [25, 28, 29, 27, 30]
+}
+
+# DataFrame 생성
+df = pd.DataFrame(data)
+
+# CSV 파일 저장
+df.to_csv('weather_data.csv', index=False)
+print("CSV 파일 생성완료.")
+
+# CSV 파일 읽기
+df_read = pd.read_csv('weather_data.csv')
+
+# 'max_temp' 열에서 가장 높은 온도를 기록한 행 찾기
+max_temp_row = df_read[df_read['temp_data'] == df_read['temp_data'].max()]
+
+# 결과 출력
+max_date = max_temp_row['date'].values[0]
+max_temp = max_temp_row['temp_data'].values[0]
+print(f"가장 높았던 기온은 {max_date} 의 {max_temp}°C 입니다")
