@@ -66,20 +66,64 @@ lng,lat
 
 
 
-import folium
+import matplotlib.pyplot as plt
+import numpy as np
+import warnings
+import csv
 import pandas as pd
+from plotnine import * 
+import folium
+import re
+
+plt.rcParams['font.family'] = 'D2Coding'
+plt.rcParams['axes.unicode_minus'] = False
+warnings.filterwarnings('ignore')
+
 
 # 데이터
-library_data = pd.read_csv('서울시 공공도서관 현황정보.csv', encoding='cp949')
+library = pd.read_csv('./data/서울시 공공도서관 현황정보.csv',delimiter=',', encoding='cp949')
+display(library)
 
-# 서울
-map_seoul = folium.Map(location=[37.566345, 126.977893], zoom_start=11)
+(ggplot(library)
+ + aes(x='경도',y='위도', color = '구명',)
+ + geom_point()
+ + theme(text=element_text(family='D2Coding'))
+)
 
-# 공공도서관
-for idx, row in library_data.iterrows():
-    folium.Marker([row['위도'], row['경도']],
-                  popup=f"{row['도서관명']} - {row['주소']} 전화번호: {row['전화번호']} 운영시간: {row['운영시간']} 정기휴관일: {row['정기휴관일']}",
-                  icon=folium.Icon(color='blue', icon='book')).add_to(map_seoul)
+# 1) scatter, library => 시각화(위치)
+x = library.경도
+y = library.위도
+plt.scatter(x, y)
+plt.xlabel('경도')
+plt.ylabel('위도')
 
-# 지도를 HTML 파일로 저장
-map_seoul.save('seoul_library_map.html')
+# 2) plotnine, ggplot2
+(ggplot(library)
+ + aes(x='경도', y='위도', color='구명')
+ + geom_point()
+ + theme(text=element_text(family='D2Coding'))
+ + scale_fill_gradient(low='red', high='green')
+)
+
+# 3) folium으로 시각화
+lng = library.위도.mean()
+lat = library.경도.mean()
+lng,lat
+
+m = folium.Map(location = [lng, lat], zoom_start= 12)
+
+for i in library.index:
+    icon_color = 'blue'
+    library_info = (library.loc[i, '도서관명'] + '-' + library.loc[i, '주소'] + 
+                    '전화번호 : ' + str(library.loc[i, '전화번호']) + 
+                    '운영시간 : ' + str(library.loc[i, '운영시간']) + 
+                    '정기 휴관일 : ' + str(library.loc[i, '정기 휴관일']))
+    folium.Marker(
+        location=[library.loc[i,'위도'], library.loc[i,'경도']],
+        popup = folium.Popup(library_info, max_width = 200),
+        color = 'yellow',
+        fill = True,
+        fill_color = 'yellow'
+    ).add_to(m)
+
+m
