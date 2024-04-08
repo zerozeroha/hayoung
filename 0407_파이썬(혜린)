@@ -1,0 +1,85 @@
+# 서울시 공공도서관 위치를 지도에 출력해보는 예제
+# 한글처리
+import matplotlib.pyplot as plt
+import numpy as np
+import warnings
+import csv
+import pandas as pd
+# 데이터시각화 tool
+from plotnine import * # r의 ggplot2 시각화패키지를 python에서도 사용
+import folium
+import re
+
+plt.rcParams['font.family'] = 'D2Coding'
+plt.rcParams['axes.unicode_minus'] = False
+warnings.filterwarnings('ignore')
+
+library = pd.read_csv('./서울시 공공도서관 현황정보.csv',delimiter=',', encoding='cp949')
+display(library)# 구별 도서관 개수 
+# 출력문
+구명
+강남구     16
+강동구     10
+강북구      7
+강서구      9
+관악구      5
+광진구      7
+구로구     12
+금천구      4
+노원구      9
+도봉구      9
+동대문구     9
+동작구      8
+마포구      6
+서대문구     4
+서초구      9
+성동구      7
+성북구     13
+송파구     12
+양천구     10
+영등포구     6
+용산구      4
+은평구      8
+종로구      9
+중구       8
+중랑구      5
+dtype: int64
+# 1) scatter, library => 시각화(위치)
+# 2) plotnine, ggplot2
+# 3) folium으로 시각화
+lng = library.위도.mean()
+lat = library.경도.mean()
+lng,lat
+
+# 팝업 내용은 library_info로 팝업 창의 너비는 300으로 해주세요!
+# fill, radius, icon_color 옵션은 마음대로 설정!!!
+# library_info = (library.loc[lib, '도서관명'] + '-' + library.loc[lib, '주소'] + 
+#                     '전화번호 : ' + str(library.loc[lib, '전화번호']) + 
+#                     '운영시간 : ' + str(library.loc[lib, '운영시간']) + 
+#                     '정기 휴관일 : ' + str(library.loc[lib, '정기 휴관일']))
+
+
+
+
+
+
+
+
+
+import folium
+import pandas as pd
+
+# 데이터
+library_data = pd.read_csv('서울시 공공도서관 현황정보.csv', encoding='cp949')
+
+# 서울
+map_seoul = folium.Map(location=[37.566345, 126.977893], zoom_start=11)
+
+# 공공도서관
+for idx, row in library_data.iterrows():
+    folium.Marker([row['위도'], row['경도']],
+                  popup=f"{row['도서관명']} - {row['주소']} 전화번호: {row['전화번호']} 운영시간: {row['운영시간']} 정기휴관일: {row['정기휴관일']}",
+                  icon=folium.Icon(color='blue', icon='book')).add_to(map_seoul)
+
+# 지도를 HTML 파일로 저장
+map_seoul.save('seoul_library_map.html')
