@@ -1,0 +1,46 @@
+#각각 3개의 그림을 다른파일로 생성해서 제출
+#이유는 일반적으로 한 번에 하나의 거북이 창만 열 수 있습니다. 
+#따라서 터틀을 닫을떄 오류가발생할수 있어서
+# 총 2개의 파일을 제출
+
+import turtle
+
+#예시. 거북이 생성 및 삼각형 그리기
+import turtle
+t = turtle.Turtle()
+t.shape('turtle') # 거북이 모양을 거북이로 설정
+
+for i in range(3): # 3번 반복
+    t.forward(200) # 거북이를 앞으로 200만큼 이동
+    t.left(120) # 거북이를 왼쪽으로 120도 회전
+turtle.done()
+
+
+
+
+# 문제1. 거북이생성 및 사각형 그리기
+t1 = turtle.Turtle()
+t1.shape('turtle')
+
+for i in range(4):
+    t1.forward(200)
+    t1.left(90)
+turtle.done()
+
+
+
+
+# 문제2. 오각별 그리기
+# 오각별의 특징을 잘생각해서 구현하기
+# hint) 오각별에서 삼각형 꼭대기의 각은 72도! 
+t2 = turtle.Turtle()
+t2.shape('turtle')
+
+
+for i in range(5):
+    t2.forward(100)
+    t2.right((360 / 5) * 2)
+    t2.forward(100)
+    t2.left(360 / 5)
+    
+turtle.done() 
