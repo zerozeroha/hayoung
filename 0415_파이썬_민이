@@ -1,0 +1,136 @@
+< 문제 >
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+matplotlib.rcParams['font.family']='Malgun Gothic'
+matplotlib.rcParams['axes.unicode_minus'] = False
+
+data1 = pd.read_csv('data/2014년 졸음운전 교통사고.csv',encoding='euc-kr') 
+data2 = pd.read_csv('data/2015년 졸음운전 교통사고.csv',encoding='euc-kr') 
+data3 = pd.read_csv('data/2016년 졸음운전 교통사고.csv',encoding='euc-kr') 
+
+#####################
+# 1. 2014년부터 2016년까지의 졸음운전 교통사고 발생 횟수의 총합과 평균 구하기
+
+# 2. 각 연도별 졸음운전 교통사고 발생 건수의 추이 시각화하기
+
+# 3. 졸음운전 교통사고 발생 건수가 가장 많은 연도와 해당 연도의 월별 사고 발생 추이 시각화하기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+< 풀이 >
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+matplotlib.rcParams['font.family']='Malgun Gothic'
+matplotlib.rcParams['axes.unicode_minus'] = False
+
+data1 = pd.read_csv('data/2014년 졸음운전 교통사고.csv',encoding='euc-kr') 
+data2 = pd.read_csv('data/2015년 졸음운전 교통사고.csv',encoding='euc-kr') 
+data3 = pd.read_csv('data/2016년 졸음운전 교통사고.csv',encoding='euc-kr')
+
+
+
+
+
+# 1. 2014년부터 2016년까지의 졸음운전 교통사고 발# 각 연도별 발생 횟수의 총합과 평균 구하기
+
+total = data1['사고(건)'].sum() + data2['사고(건)'].sum() + data3['사고(건)'].sum()
+average = total_accidents / 3
+
+print("교통사고 총합:", total)
+print("교통사고 평균:", average)
+
+
+
+
+
+
+# 2. 각 연도별 졸음운전 교통사고 발생 건수의 추이 시각화하기 ( 이건 답지 참고함 )
+
+accident = [data1['사고(건)'].sum(), data2['사고(건)'].sum(), data3['사고(건)'].sum()]
+years = ['2014년', '2015년', '2016년']
+
+plt.bar(years, accident)
+plt.title('각 연도별 졸음운전 교통사고 발생 건수')
+plt.xlabel('연도')
+plt.ylabel('사고 발생 건수')
+plt.grid(True, axis='y')
+plt.show()
+
+
+
+
+
+
+# 3. 졸음운전 교통사고 발생 건수가 가장 많은 연도와 해당 연도의 월별 사고 발생 추이 시각화하기( 이것두 참고함... )
+
+accidents_by_year = {
+    '2014년': data1['사고(건)'].sum(),
+    '2015년': data2['사고(건)'].sum(),
+    '2016년': data3['사고(건)'].sum()
+}
+
+max_accident_year = max(accidents_by_year, key=accidents_by_year.get)
+
+
+
+# 해당 연도의 데이터 가져오기
+
+max_accident_data = None
+if max_accident_year == '2014년':
+    max_accident_data = data1
+elif max_accident_year == '2015년':
+    max_accident_data = data2
+else:
+    max_accident_data = data3
+
+
+
+# 월별 사고 발생 추이 시각화
+
+monthly_accident_counts = max_accident_data.groupby('구분')['사고(건)'].sum()
+months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+plt.plot(months, monthly_accident_counts.values, marker='o')
+plt.title(f'{max_accident_year} 졸음운전 교통사고 발생 월별 추이')
+plt.xlabel('년도와 월')
+plt.ylabel('사고 발생 건수')
+plt.xticks(range(len(months)), [f'{max_accident_year} {month}' for month in months], rotation=45)
+plt.grid(True)
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
