@@ -1,0 +1,49 @@
+< 문제 >
+
+billboard hot-100에서 제목과 아티스트명 가지고 오기
+
+
+
+
+< 풀이 >
+
+from bs4 import BeautifulSoup as bs
+from urllib.parse import quote
+from urllib.request import urlopen
+import json
+
+url = f'https://www.billboard.com/charts/hot-100/'
+
+html = urlopen(url)
+soup = bs(html, 'html.parser')
+
+lists = soup.find('div',{'class':'chart-results-list'}).find_all('div',{'class':'o-chart-results-list-row-container'})
+
+data = [ {"title": "Some Song Title", "artist": "Some Artist"},
+    {"title": "Another Song Title", "artist": "Another Artist"},
+    ...]
+
+for items in lists:
+    title = items.find('h3',{'class':'c-title'}).string.strip()
+    artist = items.find('h3',{'class':'c-title'}).find_next().string.strip()
+    
+    song_info = {
+        "title": title,
+        "artist": artist
+    }
+
+    data.append(song_info)
+
+with open('Ex01.json', 'w') as f:
+    json.dump(data, f)
+
+
+
+
+
+
+
+
+
+
+
