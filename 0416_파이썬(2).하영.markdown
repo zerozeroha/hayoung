@@ -22,8 +22,8 @@
 #### 1). 
 t = 1,2,'a','b'
 print(t[0])
+del t[0]
 print(type(t), t)
-1 
 
 
 
