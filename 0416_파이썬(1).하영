@@ -190,7 +190,7 @@ plt.show()
 ### 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
 
 #### 1). 
-t t = 1,2,'a','b'
+t = 1,2,'a','b'
 print(t[0])
 * del t[0] # TypeError: 'tuple' object doesn't support item deletion
 print(type(t), t)
@@ -212,6 +212,7 @@ print(type(t), t)
 
 
 
+
 #### 3).
 lower, upper = minmax([4,5,2,3,1,6,7])
 print(type(lower), lower)
@@ -223,8 +224,8 @@ lower, upper, other = minmax([4,5,2,3,1,6,7])
 -> 에러발생 : 전달되는 값의 갯수와 전달 받는 변수의 갯수가 다를 경우 에러
 
 예) 함수 minmax가 튜플 형태로 (1, 7)을 반환하고, 이를 세 개의 변수 lower, upper, other로 언패킹하려고 할 때
-
  : 튜플에는 두 개의 값만 들어 있기 때문에 세 개의 변수로 언패킹할 수 없어서 에러가 발생
+
 
 
 
