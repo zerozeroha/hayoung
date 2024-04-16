@@ -2,13 +2,6 @@ import pandas as pd
 
 
 
-![0416 하영3](https://github.com/zerozeroha/hayoung/assets/158129874/4065a749-4aa4-49b2-b110-19377e372cde)
-
-
-
-
-
-
 
 # 날씨 데이터
 data = {
