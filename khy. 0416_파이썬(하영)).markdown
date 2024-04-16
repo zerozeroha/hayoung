@@ -1,8 +1,8 @@
 < 문제 >
 
-# 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
+### 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
 
-# 1). 
+#### 1). 
 t t = 1,2,'a','b'
 print(t[0])
 print(type(t), t)
@@ -12,7 +12,7 @@ print(type(t), t)
 
 
 
-# 2). 
+#### 2). 
 t[0] = 'hong' # TypeError: 'tuple' object does not support item assignment
 print(type(t), t)
 
@@ -20,7 +20,7 @@ print(type(t), t)
 
 
 
-# 3).
+#### 3).
 lower, upper = minmax([4,5,2,3,1,6,7])
 print(type(lower), lower)
 print(type(upper), upper)
@@ -30,9 +30,9 @@ lower, upper, other = minmax([4,5,2,3,1,6,7])
 
 
 
-# 4).
+#### 4).
 
-# indexing
+* indexing
 t = 1,2,'a','b'
 print(t[])
 print(t[1])
@@ -43,7 +43,7 @@ print(t[-1])
 
 
 
-# 2. 코드 채워넣기 : 회귀분석
+### 2. 코드 채워넣기 : 회귀분석
 
 import statsmodels.api as sm
 from scipy import stats
@@ -54,7 +54,7 @@ y = [6,7,8,9,10]
 A = stats.linregress(X, y)
 print(type(A), A)
 
-# 다음 빈칸을 채우세요.
+* 다음 빈칸을 채우세요.
 print(f'기울기 = {}')
 print(f'편향 = {}')
 print(f'R2 = {}')
@@ -64,9 +64,9 @@ print(f'피어슨값 = {}')
 
 
 
-# 3. 해당하는 그림의 코드 입력하기 
+### 3. 해당하는 그림의 코드 입력하기 
 
-# 2.) 다중분류
+#### 2.) 다중분류
 
 
 ![0416 하영 ](https://github.com/zerozeroha/hayoung/assets/158129874/6aac2c50-49b6-4546-983f-e8605220e271)
@@ -85,7 +85,7 @@ plt.show()
 
 
 
-# 2.) 이미지 데이터셋 : 올리베티 얼굴 이미지
+#### 2.) 이미지 데이터셋 : 올리베티 얼굴 이미지
 
 from sklearn.datasets import fetch_olivetti_faces
 olivetti = fetch_olivetti_faces()
@@ -117,7 +117,7 @@ imgshow(, , , )
 
 
 
-# 3.) sklearn
+#### 3.) sklearn
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -169,39 +169,39 @@ plt.show()
 
 ​
 
-# 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
+### 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
 
-# 1). 
+#### 1). 
 t t = 1,2,'a','b'
 print(t[0])
-# del t[0] # TypeError: 'tuple' object doesn't support item deletion
+* del t[0] # TypeError: 'tuple' object doesn't support item deletion
 print(type(t), t)
 1 
 
-# TypeError: 'tuple' object doesn't support item deletion
+* TypeError: 'tuple' object doesn't support item deletion
 -> 튜플은 변경이 불가능한(immutable) 시퀀스 자료형이기 때문에 요소를 삭제할 수 없어서 del t[0]와 같이 튜플의 요소를 삭제하려고 시도하면 TypeError가 발생
 <class 'tuple'> (1, 2, 'a', 'b')
 
 
 
 
-# 2). 
+#### 2). 
 t[0] = 'hong' # TypeError: 'tuple' object does not support item assignment
 print(type(t), t)
 
-# TypeError: 'tuple' object does not support item assignment
+* TypeError: 'tuple' object does not support item assignment
 -> 튜플은 한 번 생성되면 내용을 변경할 수 없는(immutable) 자료구조라서 t[0] = 'hong'과 같이 튜플의 요소를 변경하려고 하면 TypeError가 발생
 
 
 
-# 3).
+#### 3).
 lower, upper = minmax([4,5,2,3,1,6,7])
 print(type(lower), lower)
 print(type(upper), upper)
 print()
 lower, upper, other = minmax([4,5,2,3,1,6,7]) 
 
-# ValueError: not enough values to unpack (expected 3, got 2)
+* ValueError: not enough values to unpack (expected 3, got 2)
 -> 에러발생 : 전달되는 값의 갯수와 전달 받는 변수의 갯수가 다를 경우 에러
 
 예) 함수 minmax가 튜플 형태로 (1, 7)을 반환하고, 이를 세 개의 변수 lower, upper, other로 언패킹하려고 할 때
@@ -210,15 +210,15 @@ lower, upper, other = minmax([4,5,2,3,1,6,7])
 
 
 
-# 4).
+#### 4).
 
-# indexing
+* indexing
 t = 1,2,'a','b'
 print(t[])
 print(t[1])
 print(t[-1])
 
-# SyntaxError: invalid syntax. Perhaps you forgot a comma?
+* SyntaxError: invalid syntax. Perhaps you forgot a comma?
 -> > print(t[])는 유효하지 않은 구문 : [] 안에는 인덱스 값을 지정해야 하는데, 비어있기 때문에 SyntaxError가 발생
 
 
@@ -226,7 +226,7 @@ print(t[-1])
 
 
 
-# 2. 코드 채워넣기 : 회귀분석
+### 2. 코드 채워넣기 : 회귀분석
 
 import statsmodels.api as sm
 from scipy import stats
@@ -237,7 +237,7 @@ y = [6,7,8,9,10]
 A = stats.linregress(X, y)
 print(type(A), A)
 
-# 다음 빈칸을 채우세요.
+* 다음 빈칸을 채우세요.
 print(f'기울기 = {A.slope}')
 print(f'편향 = {A.intercept}')
 print(f'R2 = {A.rvalue}')
@@ -262,9 +262,13 @@ R2 = 1.0
 -> 일반적으로 피어슨 상관 계수의 절대값이 클수록 두 변수 간의 선형 상관 관계가 강하다고 판단, p-value가 작을수록 해당 상관 관계가 통계적으로 유의미함.
 
 
-# 3. 해당하는 그림의 코드 입력하기 
 
-# 1.) 다중분류
+
+
+
+### 3. 해당하는 그림의 코드 입력하기 
+
+#### 1.) 다중분류
 
 
 
@@ -273,8 +277,8 @@ R2 = 1.0
 
 import mglearn 
 from sklearn.datasets import make_blobs
-# mglearn 모듈과 scikit-learn의 make_blobs 함수를 임포트, 클러스터링 알고리즘의 실험이나 군집 데이터 시각화 
-# ​make_blobs : scikit-learn의 datasets 모듈에 포함된 함수 -> 가상의 데이터셋을 생성
+* mglearn 모듈과 scikit-learn의 make_blobs 함수를 임포트, 클러스터링 알고리즘의 실험이나 군집 데이터 시각화 
+* ​make_blobs : scikit-learn의 datasets 모듈에 포함된 함수 -> 가상의 데이터셋을 생성
  - make_blobs 함수가 받는 인자
     n_samples: 생성할 전체 데이터 포인트 수
     n_features: 특성(feature) 수, 즉 차원
@@ -291,34 +295,34 @@ plt.show()
 
 ​
 
-# 2.) 이미지 데이터셋 : 올리베티 얼굴 이미지
+### 2.) 이미지 데이터셋 : 올리베티 얼굴 이미지
 
-# 올리베티 얼굴 이미지
+#### 올리베티 얼굴 이미지
 from sklearn.datasets import fetch_olivetti_faces
 olivetti = fetch_olivetti_faces()
 
-# N x M 그리드 형식으로 이미지를 출력하는 함수
-# 주어진 이미지 데이터에서 N * M개의 이미지를 무작위로 선택하여 각각을 서로 다른 서브플롯에 출력
-# 각 이미지는 주어진 cmap(color map)을 사용하여 출력, 이미지의 제목은 해당 이미지의 타겟(target) 값으로 설정
+* N x M 그리드 형식으로 이미지를 출력하는 함수
+* 주어진 이미지 데이터에서 N * M개의 이미지를 무작위로 선택하여 각각을 서로 다른 서브플롯에 출력
+* 각 이미지는 주어진 cmap(color map)을 사용하여 출력, 이미지의 제목은 해당 이미지의 타겟(target) 값으로 설정
 
 def imgshow(N, M, img, cmap):
     fig = plt.figure(figsize=(8,5))
     plt.subplots_adjust(top=1, bottom=0, hspace=0, wspace=0.05) 
-    # 서브플롯 간의 간격을 조정 / hspace(: 수직 간격)=0 -> 수직 간격을 없애기, wspace(: 수평 간격)=0.05
+    * 서브플롯 간의 간격을 조정 / hspace(: 수직 간격)=0 -> 수직 간격을 없애기, wspace(: 수평 간격)=0.05
     img_list = np.random.choice(range(len(img.data)), N * M) # (N * M)개의 이미지를 무작위로 추출
 
-# 반복문을 사용하여 N x M 그리드 형식으로 이미지를 출력 -> 각 이미지는 서브플롯(ax)에 추가
+* 반복문을 사용하여 N x M 그리드 형식으로 이미지를 출력 -> 각 이미지는 서브플롯(ax)에 추가
     for i in range(N):
         for j in range(M):
             k = img_list[i*M+j] # 밑에 설명 추가
-            ax = fig.add_subplot(N, M, i*M+j+1) # Figure 객체에 서브플롯을 추가
-            # N은 전체 행의 수, M은 전체 열의 수를 나타내며, i*M+j+1은 현재 서브플롯의 위치를 나타냄. 
-            # 서브플롯은 왼쪽에서 오른쪽, 위에서 아래로 채워지며, 각각의 위치는 1부터 시작
+            ax = fig.add_subplot(N, M, i*M+j+1) * Figure 객체에 서브플롯을 추가
+            * N은 전체 행의 수, M은 전체 열의 수를 나타내며, i*M+j+1은 현재 서브플롯의 위치를 나타냄. 
+            * 서브플롯은 왼쪽에서 오른쪽, 위에서 아래로 채워지며, 각각의 위치는 1부터 시작
             ax.imshow(img.images[k], cmap=cmap)
-            ax.grid(False) # 그리드를 비활성화
+            ax.grid(False) * 그리드를 비활성화
             ax.xaxis.set_ticks([])
-            ax.yaxis.set_ticks([]) # x축과 y축의 눈금을 비활성화
-            plt.title(img.target[k]) #  # 이미지의 제목을 해당 이미지의 타겟 값으로 설정
+            ax.yaxis.set_ticks([]) * x축과 y축의 눈금을 비활성화
+            plt.title(img.target[k]) * 이미지의 제목을 해당 이미지의 타겟 값으로 설정
 
     plt.tight_layout() # 레이아웃을 조정하여 서브플롯이 겹치지 않도록 
     plt.show()
@@ -333,7 +337,7 @@ np.random.seed(42)
 imgshow(3, 4, olivetti, plt.cm.gray) # olivetti 데이터셋에서 이미지를 3x4 그리드 형식으로 출력
 
 
-# 3.) sklearn
+#### 3.) sklearn
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -356,8 +360,8 @@ digits = load_digits()
 
 
 
-# digits이미지의 시각화
-# : 주어진 코드에서는 seaborn 라이브러리를 사용하여 MNIST 데이터셋의 숫자 이미지를 시각화
+#### digits이미지의 시각화
+#### : 주어진 코드에서는 seaborn 라이브러리를 사용하여 MNIST 데이터셋의 숫자 이미지를 시각화
 
 idx = int(input('숫자이미지의 인덱스를 입력하세요!! => '))
 sns.heatmap(digits.images[idx], annot=True, fmt="2.0f", cbar=True
