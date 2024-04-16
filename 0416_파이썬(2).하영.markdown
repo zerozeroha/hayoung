@@ -30,7 +30,7 @@ print(type(t), t)
 
 
 #### 2). 
-t[0] = 'hong' # TypeError: 'tuple' object does not support item assignment
+t[0] = 'hong' 
 print(type(t), t)
 
 
