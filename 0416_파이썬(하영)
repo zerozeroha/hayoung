@@ -1,0 +1,381 @@
+< 문제 >
+
+# 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
+
+# 1). 
+t t = 1,2,'a','b'
+print(t[0])
+print(type(t), t)
+1 
+
+
+
+
+
+# 2). 
+t[0] = 'hong' # TypeError: 'tuple' object does not support item assignment
+print(type(t), t)
+
+
+
+
+
+# 3).
+lower, upper = minmax([4,5,2,3,1,6,7])
+print(type(lower), lower)
+print(type(upper), upper)
+print()
+lower, upper, other = minmax([4,5,2,3,1,6,7]) 
+
+
+
+
+# 4).
+
+# indexing
+t = 1,2,'a','b'
+print(t[])
+print(t[1])
+print(t[-1])
+
+
+
+
+
+
+# 2. 코드 채워넣기 : 회귀분석
+
+import statsmodels.api as sm
+from scipy import stats
+
+X = [1,2,3,4,5]
+y = [6,7,8,9,10]
+
+A = stats.linregress(X, y)
+print(type(A), A)
+
+# 다음 빈칸을 채우세요.
+print(f'기울기 = {}')
+print(f'편향 = {}')
+print(f'R2 = {}')
+print(f'피어슨값 = {}')
+
+
+
+
+
+# 3. 해당하는 그림의 코드 입력하기 
+
+# 2.) 다중분류
+
+
+<img src="C:\Users\EZEN\Desktop\0416 하영 .png"/>
+
+
+import mglearn 
+from sklearn.datasets import make_blobs
+
+X, y = make_blobs(n_samples=100, random_state=42)
+mglearn.discrete_scatter(X[:,0], X[:,1], y)
+plt.xlabel('')
+plt.ylabel('')
+plt.legend(['', '', ''])
+plt.show()
+
+
+
+# 2.) 이미지 데이터셋 : 올리베티 얼굴 이미지
+
+from sklearn.datasets import fetch_olivetti_faces
+olivetti = fetch_olivetti_faces()
+def imgshow(N, M, img, cmap):
+    fig = plt.figure(figsize=(8,5))
+    plt.subplots_adjust(top=1, bottom=0, hspace=0, wspace=0.05)
+    img_list = np.random.choice(range(len(img.data)), N * M) 
+    for i in range(N):
+        for j in range(M):
+            k = img_list[i*M+j]           
+            ax = fig.add_subplot(N, M, i*M+j+1)
+            ax.imshow(img.images[k], cmap=cmap)
+            ax.grid(False)
+            ax.xaxis.set_ticks([])
+            ax.yaxis.set_ticks([])
+            plt.title(img.target[k])
+    plt.tight_layout()
+    plt.show()
+
+
+<img src="C:\Users\EZEN\Desktop\0416 하영2.png"/>
+
+
+
+np.random.seed(42)
+imgshow(, , , )
+
+
+
+
+# 3.) sklearn
+
+import warnings
+warnings.filterwarnings('ignore')
+
+%matplotlib inline
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.family'] = 'D2Coding'
+plt.rcParams['axes.unicode_minus'] = False
+
+from sklearn.datasets import load_digits
+import seaborn as sns
+digits = load_digits()
+
+
+
+<img src="C:\Users\EZEN\Desktop\0416 하영3.png"/>
+
+
+
+idx = 
+sns.heatmap(digits., annot=, fmt=, cbar=
+           , xticklabels=, yticklabels=, cmap='')
+plt.title(f"MNIST handwrite digit image {idx} = {}")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+< 풀이 >
+
+​
+
+# 1. 각 코드에서 일어난 ERROR의 원인을 서술하시오. (튜플)
+
+# 1). 
+t t = 1,2,'a','b'
+print(t[0])
+# del t[0] # TypeError: 'tuple' object doesn't support item deletion
+print(type(t), t)
+1 
+
+# TypeError: 'tuple' object doesn't support item deletion
+-> 튜플은 변경이 불가능한(immutable) 시퀀스 자료형이기 때문에 요소를 삭제할 수 없어서 del t[0]와 같이 튜플의 요소를 삭제하려고 시도하면 TypeError가 발생
+<class 'tuple'> (1, 2, 'a', 'b')
+
+
+
+
+# 2). 
+t[0] = 'hong' # TypeError: 'tuple' object does not support item assignment
+print(type(t), t)
+
+# TypeError: 'tuple' object does not support item assignment
+-> 튜플은 한 번 생성되면 내용을 변경할 수 없는(immutable) 자료구조라서 t[0] = 'hong'과 같이 튜플의 요소를 변경하려고 하면 TypeError가 발생
+
+
+
+# 3).
+lower, upper = minmax([4,5,2,3,1,6,7])
+print(type(lower), lower)
+print(type(upper), upper)
+print()
+lower, upper, other = minmax([4,5,2,3,1,6,7]) 
+
+# ValueError: not enough values to unpack (expected 3, got 2)
+-> 에러발생 : 전달되는 값의 갯수와 전달 받는 변수의 갯수가 다를 경우 에러
+
+예) 함수 minmax가 튜플 형태로 (1, 7)을 반환하고, 이를 세 개의 변수 lower, upper, other로 언패킹하려고 할 때
+
+ : 튜플에는 두 개의 값만 들어 있기 때문에 세 개의 변수로 언패킹할 수 없어서 에러가 발생
+
+
+
+# 4).
+
+# indexing
+t = 1,2,'a','b'
+print(t[])
+print(t[1])
+print(t[-1])
+
+# SyntaxError: invalid syntax. Perhaps you forgot a comma?
+-> > print(t[])는 유효하지 않은 구문 : [] 안에는 인덱스 값을 지정해야 하는데, 비어있기 때문에 SyntaxError가 발생
+
+
+
+
+
+
+# 2. 코드 채워넣기 : 회귀분석
+
+import statsmodels.api as sm
+from scipy import stats
+
+X = [1,2,3,4,5]
+y = [6,7,8,9,10]
+
+A = stats.linregress(X, y)
+print(type(A), A)
+
+# 다음 빈칸을 채우세요.
+print(f'기울기 = {A.slope}')
+print(f'편향 = {A.intercept}')
+print(f'R2 = {A.rvalue}')
+print(f'피어슨값 = {A.pvalue}')
+
+
+class 'scipy.stats._stats_mstats_common.LinregressResult'> LinregressResult(slope=1.0, intercept=5.0, rvalue=1.0, pvalue=1.2004217548761408e-30, stderr=0.0, intercept_stderr=0.0)
+기울기 = 1.0
+* 기울기(slope) : 선형 회귀 모델에서 독립 변수(x)의 값이 종속 변수(y)에 미치는 영향을 나타내는 값 
+-> 기울기가 양수인 경우에는 x가 증가할수록 y도 증가하는 관계(기울기가 클수록 x와 y 사이의 관계가 강하게 나타남.)
+
+편향 = 5.0
+* 편향(intercept) : 선형 회귀 모델에서 모든 독립 변수(x)가 0일 때의 종속 변수(y)의 값 -> 즉, x가 0일 때의 y 절편을 나타냄.
+-> 편향이 크면 모델이 데이터에 더 잘 맞춰질 수 있지만, 과적합의 가능성이 높아질 수 있음.
+
+R2 = 1.0
+* R^2 값 : 선형 회귀 모델의 적합도를 나타내는 지표( 결정 계수 )
+-> R^2 값은 0과 1 사이의 값을 가지며, 1에 가까울수록 모델이 데이터를 잘 설명한다는 것 ->  R^2 값이 클수록 모델이 데이터에 잘 적합되었다는 것.
+
+피어슨값 = 1.2004217548761408e-30
+* 피어슨값(p-value) : 두 변수 간의 선형 상관 관계의 유의성 값 ->피어슨 상관 계수를 구한 후에 해당 값의 유의성을 판단.
+-> 일반적으로 피어슨 상관 계수의 절대값이 클수록 두 변수 간의 선형 상관 관계가 강하다고 판단, p-value가 작을수록 해당 상관 관계가 통계적으로 유의미함.
+
+
+# 3. 해당하는 그림의 코드 입력하기 
+
+# 1.) 다중분류
+
+
+<img src="C:\Users\EZEN\Desktop\0416 하영 .png"/>
+
+
+import mglearn 
+from sklearn.datasets import make_blobs
+# mglearn 모듈과 scikit-learn의 make_blobs 함수를 임포트, 클러스터링 알고리즘의 실험이나 군집 데이터 시각화 
+# ​make_blobs : scikit-learn의 datasets 모듈에 포함된 함수 -> 가상의 데이터셋을 생성
+ - make_blobs 함수가 받는 인자
+    n_samples: 생성할 전체 데이터 포인트 수
+    n_features: 특성(feature) 수, 즉 차원
+    centers: 클러스터 중심의 수
+    ...
+
+X, y = make_blobs(n_samples=100, random_state=42)
+mglearn.discrete_scatter(X[:,0], X[:,1], y)
+plt.xlabel('A_LINE')
+plt.ylabel('B_LINE')
+plt.legend(['a_side', 'b_side', 'c_side'])
+plt.show()
+
+
+​
+
+# 2.) 이미지 데이터셋 : 올리베티 얼굴 이미지
+
+# 올리베티 얼굴 이미지
+from sklearn.datasets import fetch_olivetti_faces
+olivetti = fetch_olivetti_faces()
+
+# N x M 그리드 형식으로 이미지를 출력하는 함수
+# 주어진 이미지 데이터에서 N * M개의 이미지를 무작위로 선택하여 각각을 서로 다른 서브플롯에 출력
+# 각 이미지는 주어진 cmap(color map)을 사용하여 출력, 이미지의 제목은 해당 이미지의 타겟(target) 값으로 설정
+
+def imgshow(N, M, img, cmap):
+    fig = plt.figure(figsize=(8,5))
+    plt.subplots_adjust(top=1, bottom=0, hspace=0, wspace=0.05) 
+    # 서브플롯 간의 간격을 조정 / hspace(: 수직 간격)=0 -> 수직 간격을 없애기, wspace(: 수평 간격)=0.05
+    img_list = np.random.choice(range(len(img.data)), N * M) # (N * M)개의 이미지를 무작위로 추출
+
+# 반복문을 사용하여 N x M 그리드 형식으로 이미지를 출력 -> 각 이미지는 서브플롯(ax)에 추가
+    for i in range(N):
+        for j in range(M):
+            k = img_list[i*M+j] # 밑에 설명 추가
+            ax = fig.add_subplot(N, M, i*M+j+1) # Figure 객체에 서브플롯을 추가
+            # N은 전체 행의 수, M은 전체 열의 수를 나타내며, i*M+j+1은 현재 서브플롯의 위치를 나타냄. 
+            # 서브플롯은 왼쪽에서 오른쪽, 위에서 아래로 채워지며, 각각의 위치는 1부터 시작
+            ax.imshow(img.images[k], cmap=cmap)
+            ax.grid(False) # 그리드를 비활성화
+            ax.xaxis.set_ticks([])
+            ax.yaxis.set_ticks([]) # x축과 y축의 눈금을 비활성화
+            plt.title(img.target[k]) #  # 이미지의 제목을 해당 이미지의 타겟 값으로 설정
+
+    plt.tight_layout() # 레이아웃을 조정하여 서브플롯이 겹치지 않도록 
+    plt.show()
+
+
+<img src="C:\Users\EZEN\Desktop\0416 하영2.png"/>
+
+
+
+np.random.seed(42)
+imgshow(3, 4, olivetti, plt.cm.gray) # olivetti 데이터셋에서 이미지를 3x4 그리드 형식으로 출력
+
+
+# 3.) sklearn
+
+import warnings
+warnings.filterwarnings('ignore')
+
+%matplotlib inline
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.family'] = 'D2Coding'
+plt.rcParams['axes.unicode_minus'] = False
+
+from sklearn.datasets import load_digits
+import seaborn as sns
+digits = load_digits()
+
+
+
+<img src="C:\Users\EZEN\Desktop\0416 하영3.png"/>
+
+
+# digits이미지의 시각화
+# : 주어진 코드에서는 seaborn 라이브러리를 사용하여 MNIST 데이터셋의 숫자 이미지를 시각화
+
+idx = int(input('숫자이미지의 인덱스를 입력하세요!! => '))
+sns.heatmap(digits.images[idx], annot=True, fmt="2.0f", cbar=True
+           , xticklabels=True, yticklabels=True, cmap='YlGnBu')
+plt.title(f"MNIST handwrite digit image {idx} = {digits.target[idx]}")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
