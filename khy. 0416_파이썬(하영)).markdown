@@ -69,7 +69,8 @@ print(f'피어슨값 = {}')
 # 2.) 다중분류
 
 
-<img src="C:\Users\EZEN\Desktop\0416 하영 .png"/>
+![0416 하영 ](https://github.com/zerozeroha/hayoung/assets/158129874/6aac2c50-49b6-4546-983f-e8605220e271)
+
 
 
 import mglearn 
@@ -105,7 +106,8 @@ def imgshow(N, M, img, cmap):
     plt.show()
 
 
-<img src="C:\Users\EZEN\Desktop\0416 하영2.png"/>
+
+![0416 하영2](https://github.com/zerozeroha/hayoung/assets/158129874/c3dbeb8d-c185-461d-87a3-1036ac3869a3)
 
 
 
@@ -134,7 +136,8 @@ digits = load_digits()
 
 
 
-<img src="C:\Users\EZEN\Desktop\0416 하영3.png"/>
+![0416 하영3](https://github.com/zerozeroha/hayoung/assets/158129874/ee6e5274-20e8-410f-8a66-93e64644bb9d)
+
 
 
 
@@ -264,7 +267,8 @@ R2 = 1.0
 # 1.) 다중분류
 
 
-<img src="C:\Users\EZEN\Desktop\0416 하영 .png"/>
+
+![0416 하영 ](https://github.com/zerozeroha/hayoung/assets/158129874/93809c2c-c7e4-4258-a0b6-f7c81e13daad)
 
 
 import mglearn 
@@ -320,7 +324,8 @@ def imgshow(N, M, img, cmap):
     plt.show()
 
 
-<img src="C:\Users\EZEN\Desktop\0416 하영2.png"/>
+
+![0416 하영2](https://github.com/zerozeroha/hayoung/assets/158129874/8654c734-d7a5-46aa-9b1d-172b0f881860)
 
 
 
@@ -346,8 +351,9 @@ import seaborn as sns
 digits = load_digits()
 
 
+![0416 하영3](https://github.com/zerozeroha/hayoung/assets/158129874/855bcdff-b948-414d-b068-353de28722c9)
 
-<img src="C:\Users\EZEN\Desktop\0416 하영3.png"/>
+
 
 
 # digits이미지의 시각화
