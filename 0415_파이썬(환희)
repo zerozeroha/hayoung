@@ -5,7 +5,7 @@ billboard hot-100에서 제목과 아티스트명 가지고 오기
 
 
 
-< 풀이 >
+< 풀이 > - 환희 정답지
 
 from bs4 import BeautifulSoup as bs
 from urllib.parse import quote
@@ -19,9 +19,7 @@ soup = bs(html, 'html.parser')
 
 lists = soup.find('div',{'class':'chart-results-list'}).find_all('div',{'class':'o-chart-results-list-row-container'})
 
-data = [ {"title": "Some Song Title", "artist": "Some Artist"},
-    {"title": "Another Song Title", "artist": "Another Artist"},
-    ...]
+data = []
 
 for items in lists:
     title = items.find('h3',{'class':'c-title'}).string.strip()
@@ -36,14 +34,3 @@ for items in lists:
 
 with open('Ex01.json', 'w') as f:
     json.dump(data, f)
-
-
-
-
-
-
-
-
-
-
-
