@@ -1,0 +1,65 @@
+< 문제 >
+
+# 문제. 500명의 키와 몸무게, 비만도 라벨을 이용해 비만을 판단하는 모델을 만들어보자
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+
+# 1. bmi데이터 가져오기(카톡방의 csv파일)
+
+# 2. 데이터 시각화하기(산점도로 출력)
+
+# 3. 모델링 학습 및 평가 후 예측하기(이웃의 수는 10으로 설정)
+
+# 4. 원하는 값 입력해보기(키, 몸무게)
+
+
+
+
+
+
+< 풀이 >
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+
+# 1. 데이터 가져오기
+df = pd.read_csv('./data/bmi_500.csv', index_col='Label')
+
+# 2. 데이터 시각화하기
+def scatter(label, color):
+    t = df.loc[label]
+    plt.scatter(t['Weight'], t['Height'], color=color, label=label)
+
+scatter('Extreme Obesity', 'black')
+scatter('Weak', 'blue')
+scatter('Obesity', 'pink')
+scatter('Overweight', 'red')
+scatter('Extremely Weak', 'yellow')
+scatter('Normal', 'green')
+
+plt.legend()
+plt.show()
+
+# 3. 모델링 학습 및 평가 후 예측하기
+X = df.loc[:, 'Height':'Weight']
+y = df.index
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+model = KNeighborsClassifier(n_neighbors=10)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+# 4. 원하는 값 입력해보기
+new_data = [[176, 50]]
+prediction = model.predict(new_data)
+print("Prediction:", prediction)
