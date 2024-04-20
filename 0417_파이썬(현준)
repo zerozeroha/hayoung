@@ -20,6 +20,11 @@ from sklearn import metrics
 
 
 
+
+
+
+
+
 < 풀이 >
 
 import pandas as pd
