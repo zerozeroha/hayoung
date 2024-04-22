@@ -1,0 +1,34 @@
+< 문제 >
+
+# Tensorflow.keras 이용
+# 32.챗봇_04_딥러닝모델 참고
+# 공부한 부분을 순서대로 참고하면서 이해하는 목적 
+# 모르면 답지도 같이 올려드리니 참고하세용~! 
+# 빈 부분만 코드 작성하시면 됩니당
+
+# 오류와 한글처리
+import warnings
+warnings.filterwarnings('ignore')
+%matplotlib inline
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 한글처리
+plt.rcParams['font.family'] = 'D2Coding'
+plt.rcParams['axes.unicode_minus'] =False
+
+# 챗봇 엔진에 필요한 딥러닝 모델 사용하기
+# 케라스는 신경망모델 구축시 필요한 라이브러리이다(tensorflow 버전올라가면서 keras흡수)
+# MNIST 분류모델 학습
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Flatten, Dense
+
+
+
+# 데이터 만들기
+# 1. 데이터 만들기
+# 1) MNIST 데이터셋을 로드하여 이미지 픽셀 데이터인 X_train과 X_test, 해당 이미지의 레이블(0~9 숫자) 값을 y_train과 y_test에 unpacking
