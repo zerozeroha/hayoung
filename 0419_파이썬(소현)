@@ -35,6 +35,46 @@ from tensorflow.keras.layers import Flatten, Dense
 
 
 
+
+# 데이터 만들기
+# 1. 데이터 만들기
+
+# 1) MNIST 데이터셋을 로드하여 이미지 픽셀 데이터인 X_train과 X_test, 해당 이미지의 레이블(0~9 숫자) 값을 y_train과 y_test에 unpacking
+X_train, y_train, X_test, y_test = mnist.load_data()
+
+
+# 2) 이미지 픽셀 데이터를 0~255 범위에서 0~1 범위로 정규화
+X_train = X_train/255
+X_test = X_test/255 
+
+
+# 3) 정규화된 이미지 데이터 확인
+print(X_train.shape, X_test.shape)
+
+
+# 4) tf.data를 이용해서 X_train과 y_train 데이터를 결합하고, 10000개의 배치크기로 셔플
+ds = tf.data.Dataset.from_tensor_slices((X_train, y_train)).shuffle(10000)
+
+
+# 5) 전체 학습 데이터의 70%를 실제 학습에 사용할 데이터 크기로 설정 = > 학습용 vs 검증용 = 7:3
+train_size = int(len(X_train) * 0.7) 
+
+
+# 6) 섞인 데이터셋에서 train_size만큼 데이터를 취하고, 배치 크기 20으로 설정 => 실제 학습에 사용될 데이터셋
+train_ds = ds.take(train_size).batch(20)
+
+
+# 7) 섞인 데이터셋에서 train_size만큼 건너뛰고, 나머지 데이터를 배치 크기 20으로 설정 => 검증에 사용될 데이터셋
+val_ds = ds.skip(train_size).batch(20)
+
+
+# 8) 실제 학습에 사용될 데이터의 크기를 출력
+print(train_size)
+
+
+
+
+
 ###########################################################
 
 # MNIST분류모델
@@ -143,4 +183,4 @@ print(f'손글씨 이미지의 예측한 숫자 = {predict}')
 
 
 # 결과분석
-# 예측이 정확하지 않다?!
+# 예측을 잘 못하는 것을 볼 수 있음
