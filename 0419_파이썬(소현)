@@ -36,8 +36,11 @@ from tensorflow.keras.layers import Flatten, Dense
 
 
 ###########################################################
+
 # MNIST분류모델
 # 딥러닝 프로세스
+
+
 # 1. 모델정의
 # 1-1) 케라스의 Sequential(순차적) 모델을 생성
 model = Sequential()
@@ -59,14 +62,23 @@ model.add(Dense(10, activation='tanh'))
 model.add(Dense(10, activation='softmax'))
 
 
+
+
+
 # 2. 모델생성
 # 2-1) 손실 함수로 sparse_categorical_crossentropy를, 최적화 알고리즘으로 SGD를, 그리고 정확도(accuracy) metric을 사용하는 모델 컴파일
 model.compile(loss='sparse_categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
 
 
+
+
+
 # 3. 모델학습
 # 3-1) train_ds를 학습 데이터로, val_ds를 검증 데이터로 사용하며, 15번의 epoch을 수행하여 모델 학습
 hist = model.fit(train_ds, validation_data=val_ds, epochs=15)
+
+
+
 
 
 # 4. 모델평가
@@ -82,9 +94,15 @@ model.summary()
 model.summary()
 
 
+
+
+
 # 5. 모델저장
 # 5-1) 학습된 모델을 './data/chatbot/mnist_model.keras' 파일로 저장
 model.save('./data/chatbot/mnist_model.keras')
+
+
+
 
 
 # 6. 학습된 모델을 사용해서 예측하기
@@ -110,9 +128,12 @@ plt.imshow(X_test[0],cmap='gray')
 plt.show()
 
 
-import numpy as np
+
+
+
 # 7. 모델을 사용하여 img 인덱스에 해당하는 테스트 이미지를 분류
 # 7-1) np.argmax를 사용하여 가장 높은 확률을 가진 클래스 인덱스를 예측값으로 갖는다
+import numpy as np
 img = 100
 predict = np.argmax(model.predict(X_test[[img]]))
 
@@ -122,4 +143,4 @@ print(f'손글씨 이미지의 예측한 숫자 = {predict}')
 
 
 # 결과분석
-# 예측을 잘 못하는 것을 볼 수 있음
+# 예측이 정확하지 않다?!
