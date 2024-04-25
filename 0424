@@ -1,0 +1,23 @@
+from turtle import *
+
+speed(0)
+colors = ['red','green','blue']
+pensize(2)
+degree = 2
+
+for i in range(1,500):
+    pencolor(colors[i%3])
+    forward(i)
+    left(90+degree)
+
+mainloop()
+import turtle as t
+ 
+n = 60    # 원의 갯수
+t.shape('turtle') # 
+t.speed('fastest')      # 거북이 속도를 가장 빠르게 설정
+for i in range(n):
+    t.circle(120)       # 반지름이 120인 원을 그림
+    t.right(360 / n)    # 원을 60등분해서 그릴 때 한 번에 회전하는 각도를 계산하는 것
+    
+mainloop()
