@@ -7,9 +7,10 @@ e = [1, 'a', [5,6,7,[7,8,9,[10,11,12]]], print, (), {}, {1}]
 
 1) print(e[2][3][3][1]) = ?
 
-2) print(type(a[0]), type(a[1]), type(a[2]), type(a[3]), type(a[4]), type(a[5]), type(a[6])) = <class ‘’> <class ‘'> <class ''> <class ''> <class 'tuple'> <class ''> <class ''>
+2) print(type(e[0]), type(e[1]), type(e[2]), type(e[3]), type(e[4]), type(e[5]), type(e[6])) 
+= <class ‘’> <class ‘'> <class ''> <class ''> <class 'tuple'> <class ''> <class ''> <- 빈칸채우기
 
-3) print(a[0] + a[1]) = error인 이유?
+3) print(e[0] + e[1]) = error인 이유?
 
 
 
